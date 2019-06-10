@@ -61,7 +61,11 @@ class Align extends Component {
     const props = this.props;
 
     if (!props.disabled) {
-      const source = this.alignRef.current;
+      let source = this.alignRef.current;
+      // if ref is a component, get the dom node
+      if (source.ref && source.ref.current) {
+        source = source.ref.current;
+      }
       const sourceRect = source ? source.getBoundingClientRect() : null;
 
       if (prevProps.disabled) {
@@ -131,7 +135,11 @@ class Align extends Component {
   forceAlign = () => {
     const { disabled, target, align, onAlign } = this.props;
     if (!disabled && target) {
-      const source = this.alignRef.current;
+      let source = this.alignRef.current;
+      // if ref is a component, get the dom node
+      if (source.ref && source.ref.current) {
+        source = source.ref.current;
+      }
 
       let result;
       const element = getElement(target);
