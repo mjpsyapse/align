@@ -33,6 +33,7 @@ class Align extends Component {
     monitorWindowResize: PropTypes.bool,
     disabled: PropTypes.bool,
     children: PropTypes.any,
+    forwardedRef: PropTypes.any
   };
 
   static defaultProps = {
@@ -44,7 +45,7 @@ class Align extends Component {
 
   constructor(props) {
     super(props);
-    this.alignRef = React.createRef();
+    this.alignRef = props.forwardedRef || React.createRef();
   }
 
   componentDidMount() {
