@@ -64,7 +64,7 @@ class Align extends Component {
     if (!props.disabled) {
       let source = this.alignRef.current;
       // if ref is a component, get the dom node
-      if (source.ref && source.ref.current) {
+      if (source && source.ref && source.ref.current) {
         source = source.ref.current;
       }
       const sourceRect = source ? source.getBoundingClientRect() : null;
